@@ -11,8 +11,10 @@ const getPort = () => process.env.PORT || 4000
 const getCnxStr = () => process.env.CNX_STR
 const getMode = () => process.env.MODE || 'TEST'
 const getGmailCred = () => JSON.parse(process.env.ACCOUNT_GMAIL)
+const getMongoDBName = () => process.env.MONGODB_NAME
+
 
 export {
   getCnxStr, getMode, getPort, getTokenLife, getTokenSecret,
-  getRefreshTokenSecret, getRefreshTokenLife, getGmailCred
+  getRefreshTokenSecret, getRefreshTokenLife, getGmailCred,getMongoDBName
 }

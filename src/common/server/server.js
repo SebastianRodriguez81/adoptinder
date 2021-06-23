@@ -1,4 +1,5 @@
 import adopcionRouter from '../../adopcion/route/adopcionRouter.js'
+import userRouter from '../../seguridad/route/userRouter.js'
 import express from 'express'
 
 function crearServidor() {
@@ -6,6 +7,7 @@ function crearServidor() {
   app.use(express.json())
 
   app.use('/adopcion', adopcionRouter)
+  app.use('/api/usuarios', userRouter)
 
   let server = null
 

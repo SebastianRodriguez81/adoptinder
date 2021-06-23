@@ -6,6 +6,7 @@ const router = express.Router()
 router.post('/', async (req, res, next) => {
   const CURegistracion = crearCURegistracion()
   try {
+    console.log('stop 2')
     await CURegistracion.ejecutar(req.body)
     res.json({ msg: 'ok' })
   } catch (error) {    

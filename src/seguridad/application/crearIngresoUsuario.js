@@ -13,6 +13,9 @@ export const crearCUIngresoUsuario = (daoUsuarios, encriptatron, mailSender) => 
             console.log('Password encriptada con éxito!!')
 
             // Valido la unicidad del username y agrego al usuario al dao
+            console.log('stop 3')
+            console.log(daoUsuarios)
+
             const mensaje = await daoUsuarios.agregarSinRepetirNombre(usuarioNuevo)
             console.log(mensaje)                
                                     
@@ -29,4 +32,4 @@ export const crearCUIngresoUsuario = (daoUsuarios, encriptatron, mailSender) => 
             console.log(mailResult)
         }
     }
-}
+} 
