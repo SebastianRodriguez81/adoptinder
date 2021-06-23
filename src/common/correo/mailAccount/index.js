@@ -5,8 +5,8 @@ function mailaccount() {
         port: 465,
         secure: true
     },
-    user: 'fakechigah@gmail.com',
-    pass: 'zvlgiuzrnnkgedzt'
+    user: '...@gmail.com',
+    pass: '...'
     };
 
 
