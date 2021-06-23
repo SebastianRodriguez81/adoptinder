@@ -1,5 +1,5 @@
 
-export function crearDaoUsuarios(db) {
+export function crearDaoUsuariosMongo(db) {
 
     return {
         cerrar: async () => {
@@ -10,7 +10,7 @@ export function crearDaoUsuarios(db) {
         buscarPorUsername: async (username) => {
             try {
                 const dbUsuario = db.collection('usuarios')
-                const userBuscado = await dbUsuario.findOne({ "userData.username": username })
+                const userBuscado = await dbUsuario.findOne({ "user.username": username })
 
                 if (userBuscado) {
                     console.log('usuario encontrado!')
@@ -38,7 +38,7 @@ export function crearDaoUsuarios(db) {
         agregarSinRepetirNombre: async (user) => {
             try {
                 const dbUsuario = db.collection('usuarios')
-                const userBuscado = await dbUsuario.findOne({ "userData.username": user.username })
+                const userBuscado = await dbUsuario.findOne({ "user.username": user.username })
 
                 if (userBuscado) {
                     console.log('Nombre de usuario existente')

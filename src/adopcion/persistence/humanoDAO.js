@@ -6,7 +6,7 @@ function humanoDAO() {
                 idUsaario: 123456789,
                 nick: 'Pepe Argento'
             }
-
+            
             console.log('humano encontrado!');
 
             return dtoHumano;

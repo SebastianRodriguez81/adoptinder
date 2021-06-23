@@ -37,6 +37,7 @@ export const crearUsuario = (datosUsuario) => {
     }
 
     return {
+        id: datosUsuario.id,
         username: datosUsuario.username,
         password: datosUsuario.password,
         email: datosUsuario.email

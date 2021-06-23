@@ -1,7 +1,10 @@
 import mongodb from 'mongodb'
 import { getMongoDBName } from '../../../config.js'
 
-function crearMongoClient(cnxStr) {
+
+ function crearMongoClient(cnxStr) {
+  
+  //const uri = "mongodb+srv://sebastian:sebowi0510@cluster1.lc14u.mongodb.net/tp2db?retryWrites=true&w=majority"
   const client = new mongodb.MongoClient(cnxStr, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -11,11 +14,7 @@ function crearMongoClient(cnxStr) {
     connect: async () => {
 
       await client.connect()
-
-      const db = client.db(getMongoDBName())
-      db.close = async () => {
-        await client.close()
-      }
+      const db = client.db(getMongoDBName())      
       return db
     },
     close: async () => {

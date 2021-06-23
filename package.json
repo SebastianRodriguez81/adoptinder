@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "start": "set MODE=PROD&& node src/main.js",
+    "startDev": "node src/main.js"    
   },
   "author": "",
   "license": "ISC",
