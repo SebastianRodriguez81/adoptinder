@@ -1,5 +1,5 @@
 
-export function crearDaoUsuarios(db) {  
+export function crearDaoUsuarios(db) {
 
     return {
         cerrar: async () => {
@@ -10,7 +10,7 @@ export function crearDaoUsuarios(db) {
         buscarPorUsername: async (username) => {
             try {
                 const dbUsuario = db.collection('usuarios')
-                const userBuscado = await dbUsuario.findOne({ username: username })
+                const userBuscado = await dbUsuario.findOne({ "userData.username": username })
 
                 if (userBuscado) {
                     console.log('usuario encontrado!')
@@ -27,7 +27,7 @@ export function crearDaoUsuarios(db) {
         agregar: async (user) => {
             try {
                 const dbUsuario = db.collection('usuarios')
-                await dbUsuario.insert({ user })
+                await dbUsuario.insertOne({ user })
                 console.log('usuario registrado!')
             }
             catch (err) {
@@ -35,19 +35,16 @@ export function crearDaoUsuarios(db) {
             }
         },
 
-        agregarSinRepetirNombre: async (userData) => {
-            console.log('stop 3')
+        agregarSinRepetirNombre: async (user) => {
             try {
-                console.log('stop 3')
                 const dbUsuario = db.collection('usuarios')
-                const userBuscado = await dbUsuario.findOne({ username: userData.username })
+                const userBuscado = await dbUsuario.findOne({ "userData.username": user.username })
 
                 if (userBuscado) {
                     console.log('Nombre de usuario existente')
                     throw new Error('Nombre de usuario existente.')
-
                 } else {
-                    await dbUsuario.insert({ user })
+                    await dbUsuario.insertOne({ user })
                     console.log('usuario registrado!')
                 }
             }

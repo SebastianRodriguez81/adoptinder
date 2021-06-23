@@ -1,7 +1,7 @@
 import { crearUsuario } from '../domain/userSchema.js'
 
 export const crearCUIngresoUsuario = (daoUsuarios, encriptatron, mailSender) => {
-        
+
     return {
         ejecutar: async (datos) => {
             // Validar los datos de usuario
@@ -12,13 +12,9 @@ export const crearCUIngresoUsuario = (daoUsuarios, encriptatron, mailSender) => 
             usuarioNuevo.password = hash
             console.log('Password encriptada con éxito!!')
 
-            // Valido la unicidad del username y agrego al usuario al dao
-            console.log('stop 3')
-            console.log(daoUsuarios)
+            // Valido la unicidad del username y agrego al usuario al dao            
+            await daoUsuarios.agregarSinRepetirNombre(usuarioNuevo)            
 
-            const mensaje = await daoUsuarios.agregarSinRepetirNombre(usuarioNuevo)
-            console.log(mensaje)                
-                                    
             // Enviar mail de registro satisfactorio
             const mail = {
                 to: [`${usuarioNuevo.email}`],
@@ -26,10 +22,10 @@ export const crearCUIngresoUsuario = (daoUsuarios, encriptatron, mailSender) => 
                 body: `Bienvenido, ${usuarioNuevo.username}, te registraste exitosamente.
                 Ingresá a /login con tus datos y empezá a usar AdopTinder!!`
             }
-            
+
             const mailResult = await mailSender.enviarMail(mail)
             console.log('Mail de bienvenida enviado exitosamente!')
             console.log(mailResult)
         }
     }
-} 
+}

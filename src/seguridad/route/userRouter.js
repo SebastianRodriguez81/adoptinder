@@ -4,12 +4,11 @@ import { crearCURegistracion } from '../application/cuFactory.js'
 const router = express.Router()
 
 router.post('/', async (req, res, next) => {
-  const CURegistracion = crearCURegistracion()
   try {
-    console.log('stop 2')
+    const CURegistracion = crearCURegistracion()
     await CURegistracion.ejecutar(req.body)
     res.json({ msg: 'ok' })
-  } catch (error) {    
+  } catch (error) {
     next(error)
   }
 })
